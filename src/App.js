@@ -1,23 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import "./style.css"
+import Todo from "./components/Todo";
 
-function App() {
+function App({tasks}) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="todoapp stack-large">
+      {console.log(tasks)}
+      <h1>To do list</h1>
+      <form>
+        <h2 className="label-wrapper">
+          <label htmlFor="new-todo-input" className="label__lg">
+            O que precisa ser feito?
+          </label>
+        </h2>
+        <input
+          type="text"
+          id="new-todo-input"
+          className="input input__lg"
+          name="text"
+          autoComplete="off"
+        />
+        <button type="submit" className="btn btn__primary btn__lg">
+          Add
+        </button>
+      </form>
+      <div className="filters btn-group stack-exception">
+        <button type="button" className="btn toggle-btn" aria-pressed="true">
+          <span className="visually-hidden">Show </span>
+          <span>all</span>
+          <span className="visually-hidden"> tasks</span>
+        </button>
+        <button type="button" className="btn toggle-btn" aria-pressed="false">
+          <span className="visually-hidden">Show </span>
+          <span>Active</span>
+          <span className="visually-hidden"> tasks</span>
+        </button>
+        <button type="button" className="btn toggle-btn" aria-pressed="false">
+          <span className="visually-hidden">Show </span>
+          <span>Completed</span>
+          <span className="visually-hidden"> tasks</span>
+        </button>
+      </div>
+      <h2 id="list-heading">
+        3 tasks remaining
+      </h2>
+      <ul
+        role="list"
+        className="todo-list stack-large stack-exception"
+        aria-labelledby="list-heading"
+      >
+        <Todo className="todo stack-small" name="fight" completed={true} id='todo-0'/>
+        <Todo className="todo stack-small" name="defeat" completed={true} id='todo-1'/>
+        <Todo className="todo stack-small" name="rise" completed={false} id='todo-2'/>
+        <Todo className="todo stack-small" name="repeat" completed={false} id='todo-3'/>
+
+      </ul>
     </div>
   );
 }
